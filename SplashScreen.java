@@ -27,9 +27,14 @@ public class SplashScreen extends ActionBarActivity {
             @Override
             public void run() {
 
-                Intent objIntent = new Intent(SplashScreen.this, WouldLikeYouUsePassword.class);
-                startActivity(objIntent);
-                finish();
+                if (objUserTABLE.CheckCursor()) {
+
+                    Intent objIntent = new Intent(SplashScreen.this, WouldLikeYouUsePassword.class);
+                    startActivity(objIntent);
+                } else {
+                    Intent objIntent = new Intent(SplashScreen.this, MainActivity.class);
+                    startActivity(objIntent);
+                }
             }
         }, 3000);
 

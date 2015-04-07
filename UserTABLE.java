@@ -28,7 +28,7 @@ public class UserTABLE {
 
     public boolean CheckCursor(){
 
-        Cursor objCursor = readSQLite.query(TABLE_USER, new String[] {COLUMN_ID, COLUMN_PASS},null,null,null,null,null);
+        Cursor objCursor = readSQLite.query(TABLE_USER, new String[] {COLUMN_PASS},null,null,null,null,null);
 
         if (objCursor != null){
 
