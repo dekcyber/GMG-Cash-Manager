@@ -2,6 +2,7 @@ package com.example.peera_000.gmgcashmanager;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -15,6 +16,7 @@ public class UserTABLE {
     //Explicit
     private OpenHelper objOpenHelper;
     private SQLiteDatabase writeSQLite,readSQLite;
+    private String StrCheckSamePassword;
 
     public static final String TABLE_USER = "UserTABLE";
     public static final String COLUMN_ID = "User_id";
@@ -26,6 +28,15 @@ public class UserTABLE {
         readSQLite = objOpenHelper.getReadableDatabase();
     }//Contractor
 
+    public String CheckSamePassword() {
+        Cursor objCursor = readSQLite.query(TABLE_USER,new String[]{COLUMN_PASS},null,null,null,null,null);
+        if (objCursor != null) {
+            objCursor.moveToLast();
+             StrCheckSamePassword = objCursor.getString(objCursor.getColumnIndex(COLUMN_PASS));
+        }
+
+        return StrCheckSamePassword;
+    }
     public boolean CheckCursor(){
 
         Cursor objCursor = readSQLite.query(TABLE_USER, new String[] {COLUMN_PASS},null,null,null,null,null);
